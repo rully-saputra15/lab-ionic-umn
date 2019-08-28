@@ -11,12 +11,8 @@ const routes: Routes = [
           loadChildren:'./resep/resep.module#ResepPageModule'
         },
         {
-          path:'detail',
+          path:':resepId',
           loadChildren:'./resep/detail/detail.module#DetailPageModule'
-        },
-        {
-          path:'edit',
-          loadChildren:'./resep/edit/edit.module#EditPageModule'
         },
       ]},
   { path: 'users', loadChildren: './users/users.module#UsersPageModule' },

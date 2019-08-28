@@ -37,15 +37,10 @@ export class ResepService {
     };
   }
   deleteResep(resepId:string){
-      var i = 0;
-      var index = -1;
-      this.resep.forEach(element=>{
-        i++;
-        if(element.id == resepId){
-          index = i;
-        }
-        
-      });
-      return index;
+    var filtered= this.resep.filter(resep=>{
+      return resep.id !== resepId
+    })
+    this.resep = filtered;
+    return this.resep;
   };
 }

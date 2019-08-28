@@ -16,8 +16,11 @@ export class ResepPage implements OnInit {
   detil(id){
     console.log(this.resepService.getResep(id));
   }
+  ionViewWillEnter(){
+    this.resep = this.resepService.getAllResep();
+  }
+  //automatically running
   remove(id){
-    var index = this.resepService.deleteResep(id);
-    this.resep.splice(index-1,1);
+    this.resep = this.resepService.deleteResep(id);
   }
 }
