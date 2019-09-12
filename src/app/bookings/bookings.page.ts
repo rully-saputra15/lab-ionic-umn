@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Booking } from './bookings.model';
+import { BookingsService } from './bookings.service';
 
 @Component({
   selector: 'app-bookings',
@@ -7,13 +9,16 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./bookings.page.scss'],
 })
 export class BookingsPage implements OnInit {
-
-  constructor(private menuCtrl:MenuController) { }
+  bookings : Booking[];
+  constructor(private menuCtrl:MenuController,private bookingsService : BookingsService) { }
 
   ngOnInit() {
+    this.bookings = this.bookingsService.getAllBookings();
   }
   onOpenMenu(){
     this.menuCtrl.toggle('m1');
-    
+  }
+  deleteBookings(id:String){
+    this.bookings = this.bookingsService.deleteBooking(id);
   }
 }
