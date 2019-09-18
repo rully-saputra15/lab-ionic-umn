@@ -33,7 +33,7 @@ export class PlacesService {
   getPlaces(placeId:String){
     return{
       ...this._places.find(_places=>{
-        return _places.id !== placeId
+        return _places.id === placeId
       })
     };
   }

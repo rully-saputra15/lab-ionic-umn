@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, IonItemSliding } from '@ionic/angular';
 import { Booking } from './bookings.model';
 import { BookingsService } from './bookings.service';
 
@@ -18,7 +18,8 @@ export class BookingsPage implements OnInit {
   onOpenMenu(){
     this.menuCtrl.toggle('m1');
   }
-  deleteBookings(id:String){
+  deleteBookings(id:String,slidingEl: IonItemSliding){
+    slidingEl.close();
     this.bookings = this.bookingsService.deleteBooking(id);
   }
 }

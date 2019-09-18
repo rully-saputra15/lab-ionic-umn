@@ -22,7 +22,7 @@ export class PlaceDetailPage implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       paramMap=>{
         if(!paramMap.has('placeId')){return;}
-        this.loadedPlaces = this.placesService.getPlaces(paramMap.get('placesId'));
+        this.loadedPlaces = this.placesService.getPlaces(paramMap.get('placeId'));
       }
     )
   }
@@ -52,7 +52,7 @@ export class PlaceDetailPage implements OnInit {
     })
   }
 
-  async bookSheetPlace(){
+  /*async bookSheetPlace(){
     const actionSheet = await this.actionSheetCtrl.create({
       header: 'Book Place',
       buttons: [{
@@ -77,5 +77,48 @@ export class PlaceDetailPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }*/
+  onBookPlace(){
+    this.actionSheetCtrl.create({
+      header:'Choose an action',
+      buttons:[
+        {
+          text:'Select Date',
+          handler: () => {
+            this.openBookingModal('select');
+          }
+        },
+        {
+          text:'Random Date',
+          handler: () => {
+            this.openBookingModal('random');
+          }
+        },
+          {
+            text:'Cancel',
+            role:'cancel'
+          }
+      ]
+    })
+    .then(actionSheetEl => {
+      actionSheetEl.present();
+    });
+  }
+  openBookingModal(mode:'select' | 'random'){
+    console.log(mode);
+    this.modalCtrl.create({
+      component:CreateBookingComponent,
+      componentProps:{selectedplace:this.loadedPlaces}
+    })
+    .then(modalEl =>{
+      modalEl.present();
+      return modalEl.onDidDismiss();
+    })
+    .then(resultData => {
+      console.log(resultData.data,resultData.role);
+      if(resultData.role === 'confirm'){
+        console.log('Booked');
+      }
+    });
   }
 }
