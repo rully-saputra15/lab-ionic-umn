@@ -38,13 +38,13 @@ const routes: Routes = [
                     {
                         path: ':placeId',
                         loadChildren: './offers/offer-bookings/offer-bookings.module#OfferBookingsPageModule'
-                    },
-                    {
-                        path: '',
-                        redirectTo: 'places/tabs/discover',
-                        pathMatch : 'full'
                     }
                 ]
+            },
+            {
+                path: '',
+                redirectTo: '/places/tabs/discover',
+                pathMatch: 'full'
             }
         ]
     },
@@ -59,5 +59,6 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
+
 
 export class PlacesRoutingModule {}

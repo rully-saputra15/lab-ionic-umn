@@ -1,4 +1,3 @@
-import { BookingsItemComponent } from './bookings-item/bookings-item.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BookingsPage, BookingsItemComponent]
+  declarations: [BookingsPage]
 })
 export class BookingsPageModule {}

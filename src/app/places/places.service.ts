@@ -1,41 +1,48 @@
 import { Injectable } from '@angular/core';
-import { Place } from './places.model';
+import { Place } from './place.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlacesService {
+
   private _places: Place[] = [
     new Place(
       'p1',
       'Gading Apartment',
       '2BR, Luas dan Cozy',
-      'https://d1nabgopwop1kh.cloudfront.net/hotel-asset/30000002100123853_wh_3',
-      100000000
+      'http://www.desertsun.co.uk/blog/images/Apartment%201.jpg',
+      100000000,
+      new Date('2019-01-01'),
+      new Date('2020-12-31')
     ),
     new Place(
       'p2',
       'Serpong Apartment',
       'Apartemen Romantis',
-      'https://d1nabgopwop1kh.cloudfront.net/hotel-asset/30000002100123853_wh_3',
-      5000000000
+      'https://static3.businessinsider.com/image/5681799ce6183e55008b526d-480/carmel-place-nyc-micro-apartment.jpg',
+      125000000,
+      new Date('2019-01-01'),
+      new Date('2020-12-31')
     ),
     new Place(
       'p3',
       'BSD Apartment',
       'Apartemen Murah',
-      'https://d1nabgopwop1kh.cloudfront.net/hotel-asset/30000002100123853_wh_3',
-      5000000000
+      'https://lh3.googleusercontent.com/-F5aY6yinaiA/TW_NzlRJppI/AAAAAAAAABo/fewLnztPeDU/s1600/apartment+building+designs...jpg',
+      50000000,
+      new Date('2019-01-01'),
+      new Date('2020-12-31')
     ),
   ];
-  get places(){
+
+  get places() {
     return [...this._places];
   }
-  getPlaces(placeId:String){
-    return{
-      ...this._places.find(_places=>{
-        return _places.id === placeId
-      })
-    };
-  }
+
   constructor() { }
+
+  getPlace(id: string){
+    return {...this._places.find(p => p.id === id)};
+  }
 }

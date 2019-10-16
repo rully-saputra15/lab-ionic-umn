@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, IonItemSliding } from '@ionic/angular';
-import { Booking } from './bookings.model';
-import { BookingsService } from './bookings.service';
+import { BookingService } from './booking.service';
+import { Booking } from './booking.model';
+import { IonItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'app-bookings',
@@ -9,17 +9,17 @@ import { BookingsService } from './bookings.service';
   styleUrls: ['./bookings.page.scss'],
 })
 export class BookingsPage implements OnInit {
-  bookings : Booking[];
-  constructor(private menuCtrl:MenuController,private bookingsService : BookingsService) { }
+  loadedBookings: Booking[];
+
+  constructor(private bookingService: BookingService) { }
 
   ngOnInit() {
-    this.bookings = this.bookingsService.getAllBookings();
+    this.loadedBookings = this.bookingService.bookings;
   }
-  onOpenMenu(){
-    this.menuCtrl.toggle('m1');
-  }
-  deleteBookings(id:String,slidingEl: IonItemSliding){
+
+  onCancel(offerId: string, slidingEl: IonItemSliding) {
     slidingEl.close();
-    this.bookings = this.bookingsService.deleteBooking(id);
+    // cancel booking with id offerId
   }
+
 }
