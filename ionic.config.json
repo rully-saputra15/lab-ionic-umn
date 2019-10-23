@@ -1,5 +1,7 @@
 {
   "name": "umn-homes",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
