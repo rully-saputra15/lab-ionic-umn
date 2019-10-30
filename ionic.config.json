@@ -1,7 +1,5 @@
 {
-  "name": "umn-homes",
-  "integrations": {
-    "cordova": {}
-  },
+  "name": "Week10",
+  "integrations": {},
   "type": "angular"
 }
