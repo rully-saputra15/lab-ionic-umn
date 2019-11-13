@@ -1,5 +1,7 @@
 {
-  "name": "Week10-php",
-  "integrations": {},
+  "name": "Week13",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
